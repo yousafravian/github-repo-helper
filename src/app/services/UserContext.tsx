@@ -1,13 +1,12 @@
 import {createContext} from "react";
 import {RestEndpointMethodTypes} from "@octokit/plugin-rest-endpoint-methods";
 
-export type UserType = RestEndpointMethodTypes['users']['getAuthenticated']['response'];
+export type User = RestEndpointMethodTypes['users']['getAuthenticated']['response'] | undefined;
 export type IUserContext = {
-    user: any
+    user: User
     updateUser: (user: any) => void
 }
 export const UserContext = createContext<IUserContext>({
-    user: {test: 'user'},
-    updateUser: () => {
-    }
+    user: undefined,
+    updateUser: (user: User) => {}
 });

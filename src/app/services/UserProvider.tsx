@@ -1,10 +1,10 @@
 import {ReactNode, useEffect, useState} from "react";
-import {UserContext, UserType} from "./UserContext";
-import {GitHubHelper} from "./services/GitHubHelper";
+import {UserContext, User} from "./UserContext";
+import {GitHubHelper} from "./GitHubHelper";
 
 
 export const UserProvider = ({children}: { children: ReactNode }) => {
-    const [user, updateUser] = useState<UserType>();
+    const [user, updateUser] = useState<User>();
 
 
     useEffect(() => {
