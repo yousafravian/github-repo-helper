@@ -2,6 +2,7 @@ import {useContext} from "react";
 import {UserContext} from "../services/UserContext";
 import LayoutContainer from "../shared/Layout";
 import HeaderIcon from '../../assets/github-mark-white.svg'
+import ThemedSwitch from "../components/ThemeSwitch";
 
 function Header() {
     const {user} = useContext(UserContext);
@@ -30,36 +31,13 @@ function Header() {
                         </div>
                         <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                             <div className="flex flex-shrink-0 items-center">
-                                {/*<span className="text-gray-50 font-bold text-6xl bg-gradient-to-r from-black to-gray-300 bg-clip-text text-transparent font-outline-1">GITHUB</span>*/}
-                                <img className="h-12 drop-shadow-2xl"
+                                <img className="h-12 drop-shadow-2xl invert dark:invert-[0]"
                                      src={HeaderIcon}
                                      alt="GitHub logo"/>
                             </div>
-                            {/*<div className="hidden my-auto sm:ml-6 sm:block">
-                            <div className="flex space-x-4">
-                                <a href="#"
-                                   className="bg-transparent text-white hover:underline rounded-md px-3 py-2 text-sm font-medium"
-                                   aria-current="page">Projects</a>
-                                <a href="#"
-                                   className="bg-transparent text-white hover:underline rounded-md px-3 py-2 text-sm font-medium">About</a>
-                                <a href="#"
-                                   className="bg-transparent text-white hover:underline rounded-md px-3 py-2 text-sm font-medium">Contact</a>
-                            </div>
-                        </div>*/}
                         </div>
-                        <div
-                            className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            <button type="button"
-                                    className="relative rounded-full hidden md:inline-block bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                <span className="absolute -inset-1.5"></span>
-                                <span className="sr-only">View notifications</span>
-                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                     stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
-                                </svg>
-                            </button>
-
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                            <ThemedSwitch/>
                             <div className="relative ml-3">
                                 <div>
                                     <button type="button"
@@ -72,29 +50,7 @@ function Header() {
                                              alt=""/>
                                     </button>
                                 </div>
-                                {/*<div
-                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                       id="user-menu-item-0">Your Profile</a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                       id="user-menu-item-1">Settings</a>
-                                    <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                       id="user-menu-item-2">Sign out</a>
-                                </div>*/}
                             </div>
-                        </div>
-                    </div>
-                    <div className="sm:hidden" id="mobile-menu">
-                        <div className="space-y-1 px-2 pb-3 pt-2">
-                            <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-                               aria-current="page">Dashboard</a>
-                            <a href="#"
-                               className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-                            <a href="#"
-                               className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-                            <a href="#"
-                               className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
                         </div>
                     </div>
                 </nav>

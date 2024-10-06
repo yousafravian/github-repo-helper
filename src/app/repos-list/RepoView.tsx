@@ -1,14 +1,24 @@
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "../components/Card";
 import {Repo} from "../shared/types/Repos";
+import {Button} from "../components/Button";
+import {ExternalLink, Trash2} from "lucide-react";
+import {Checkbox} from "../components/Checkbox";
 
 export default function RepoView({ repo }: { repo: Repo }) {
 
-    console.log("Repo");
     return <>
-        <div
-            className='h-32 rounded-xl w-64 border border-amber-700 px-4 py-2 bg-gray-400/40 text-black drop-shadow-2xl shadow-2xl backdrop-blur-sm'>
-            <span className='capitalize font-bold'>{repo.owner.login}</span>
-            <br/>
-            <span>{repo.name}</span>
-        </div>
+        <Card className="flex-grow flex-shrink bg-white/5">
+            <CardHeader>
+                <CardTitle><Checkbox id="terms1" /> {repo.full_name}</CardTitle>
+                <CardDescription>{ repo.description ?? '--' }</CardDescription>
+            </CardHeader>
+            <CardContent>
+
+            </CardContent>
+            <CardFooter className="flex justify-end gap-2">
+                <Button variant="destructive" size='sm'><Trash2 className="w-5 h-5"/></Button>
+                <Button title="Open Repo" size='sm' onClick={() => window.open(repo.html_url, '_blank')}><ExternalLink className="w-5 h-5"/></Button>
+            </CardFooter>
+        </Card>
     </>
 }

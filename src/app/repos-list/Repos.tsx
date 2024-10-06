@@ -14,9 +14,6 @@ function Repos() {
                 const repos = await GitHubHelper.getRepositories();
                 setRepos(repos);
                 setLoading(false);
-                // TODO: Remove
-                // setTimeout(() => {
-                // }, 2000);
             } catch (e) {
                 // setLoading(false);
                 console.error('Error fetching Repos');

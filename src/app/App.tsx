@@ -5,6 +5,7 @@ import FallBackError from "./shared/FallBackError";
 import UserProvider from "./services/UserProvider";
 import Header from "./header/Header";
 import LayoutContainer from "./shared/Layout";
+import Repos from "./repos-list/Repos";
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
                 <UserProvider>
                     <Header/>
                     <LayoutContainer>
-                        {/*<Repos/>*/}
+                       <Repos/>
                     </LayoutContainer>
                 </UserProvider>
             </ErrorBoundary>
