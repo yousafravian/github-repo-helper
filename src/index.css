@@ -6,6 +6,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /*background: -webkit-linear-gradient(to right, #2C5364, #203A43, black);  !* Chrome 10-25, Safari 5.1-6 *!*/
+  /*background: linear-gradient(to right, #565b65, #2a2b33, black); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+
+  background: rgb(17 24 39 / 1);
+  height: 100vh;
+
 }
 
 code {
