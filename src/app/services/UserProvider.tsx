@@ -45,9 +45,7 @@ export const UserProvider = ({children}: { children: ReactNode }) => {
 
     useEffect(() => {
         if (token) {
-            fetchUser(token).then(r => {
-                console.log('res:', r);
-            });
+            fetchUser(token);
         }
     }, [token]);
 

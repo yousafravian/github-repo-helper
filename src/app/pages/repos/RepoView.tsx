@@ -1,8 +1,8 @@
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "../components/Card";
-import {Repo} from "../shared/types/Repos";
-import {Button} from "../components/Button";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "../../components/Card";
+import {Repo} from "../../shared/types/Repos";
+import {Button} from "../../components/Button";
 import {ExternalLink, Trash2} from "lucide-react";
-import {Checkbox} from "../components/Checkbox";
+import {Checkbox} from "../../components/Checkbox";
 
 export default function RepoView({ repo }: { repo: Repo }) {
 
