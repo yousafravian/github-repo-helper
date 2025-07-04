@@ -1,10 +1,10 @@
 import {useContext} from "react";
-import {UserContext} from "../services/UserContext";
-import LayoutContainer from "../shared/Layout";
-import HeaderIcon from '../../assets/github-mark-white.svg'
-import ThemedSwitch from "../components/ThemeSwitch";
+import {UserContext} from "../../services/UserContext";
+import LayoutContainer from "../../shared/Layout";
+import HeaderIcon from '../../../assets/github-mark-white.svg'
+import ThemedSwitch from "../../components/ThemeSwitcher";
 import {HeaderNavigationMenu} from "./HeaderNavItems";
-import {Avatar, AvatarFallback, AvatarImage} from "../components/Avatar";
+import ProfileDropDown from "../../shared/ProfileDropDown";
 
 function Header() {
     const {user} = useContext(UserContext);
@@ -24,10 +24,7 @@ function Header() {
                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <ThemedSwitch/>
                             <div className="relative ml-3">
-                                <Avatar>
-                                    <AvatarImage src={user?.data?.avatar_url} alt="@shadcn" />
-                                    <AvatarFallback>YR</AvatarFallback>
-                                </Avatar>
+                                <ProfileDropDown user={user}/>
                             </div>
                         </div>
                     </div>

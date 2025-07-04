@@ -1,16 +1,14 @@
 import * as React from "react"
 
-import { cn } from "../shared/utils"
+import { cn } from "../../shared/utils"
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../components/NavigationMenu"
-import {Link, NavLink} from "react-router-dom";
+} from "../../components/NavigationMenu"
+import {NavLink} from "react-router-dom";
 
 const components: { title: string; href: string; description: string }[] = [
   {
