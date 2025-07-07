@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { cn } from "../../shared/utils"
 import {
   NavigationMenu,
@@ -9,57 +8,38 @@ import {
   navigationMenuTriggerStyle,
 } from "../../components/NavigationMenu"
 import {NavLink} from "react-router-dom";
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-]
+import {Info, Folder} from "lucide-react";
 
 export function HeaderNavigationMenu() {
   return (
     <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem className="hover:cursor-pointer">
-          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            <NavLink to={'/repos'}
-                     className={({ isActive }) => isActive ? 'underline' : ''}>Repositories</NavLink>
+      <NavigationMenuList className="gap-2">
+        <NavigationMenuItem>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "glass hover:bg-white/10 transition-all duration-300")}>
+            <NavLink 
+              to={'/repos'}
+              className={({ isActive }) => cn(
+                'flex items-center gap-2 font-medium transition-colors',
+                isActive ? 'text-blue-400' : 'text-gray-300 hover:text-white'
+              )}
+            >
+              <Folder className="w-4 h-4" />
+              Repositories
+            </NavLink>
           </NavigationMenuLink>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            <NavLink to={'/about'}
-                     className={({ isActive }) => isActive ? 'underline' : ''}>About App</NavLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "glass hover:bg-white/10 transition-all duration-300")}>
+            <NavLink 
+              to={'/about'}
+              className={({ isActive }) => cn(
+                'flex items-center gap-2 font-medium transition-colors',
+                isActive ? 'text-blue-400' : 'text-gray-300 hover:text-white'
+              )}
+            >
+              <Info className="w-4 h-4" />
+              About App
+            </NavLink>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -77,13 +57,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 glass-card hover:bg-white/10 hover:transform hover:scale-105",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-sm font-medium leading-none text-white">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-gray-400">
             {children}
           </p>
         </a>
