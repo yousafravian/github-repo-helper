@@ -41,27 +41,41 @@ export const UserProvider = ({children}: { children: ReactNode }) => {
     resetBoundary();
   }
 
-  const fetchAccessToken = async (code: string) => {
-    const response = await fetch(`https://git.login.yousaf.pro/accessToken?code=${encodeURIComponent(code)}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-      },
-    });
-    const data = await response.json();
-    if (data.token) {
-      localStorage.setItem('gh_token', data.token);
+  const fetchAccessToken = async (code: string, controller: AbortController) => {
+    try {
+      const response = await fetch(`https://github-login-access-token-serverless.vercel.app/accessToken?code=${encodeURIComponent(code)}`, {
+        method: 'GET',
+        signal: controller.signal
+      });
+      if (response.status === 500) {
+        toast({
+          title: "Opsie!!",
+          description: "Looks like something is wrong with your token",
+          variant: "destructive"
+        });
+      }
+      const data = await response.json();
+      if (data.token) {
+        localStorage.setItem('gh_token', data.token);
+      }
+    } catch (e: unknown) {
+      if (e instanceof Error && e.name === 'AbortError') {
+        return;
+      }
+      toast({
+        title: "Opsie!!",
+        description: "Looks like something is wrong with your token",
+        variant: "destructive"
+      });
     }
   }
 
 
   useEffect(() => {
     const parsedUrl = new URL(window.location.href);
+    const controller = new AbortController();
     if(parsedUrl.searchParams.has('code')) {
-      fetchAccessToken(parsedUrl.searchParams.get('code')!);
+      fetchAccessToken(parsedUrl.searchParams.get('code')!, controller);
     }
 
     const token = localStorage.getItem('gh_token');
@@ -74,6 +88,9 @@ export const UserProvider = ({children}: { children: ReactNode }) => {
       setError(new Error('No token found'));
     }
 
+    return () => {
+      controller.abort();
+    }
 
     /*if (intervalId.current) {
       clearInterval(intervalId.current);

@@ -15,7 +15,6 @@ export default function ThemedSwitch() {
     <Switch
       checked={enabled}
       onClick={() => setEnabled((prev: boolean) => !prev)}
-      className="dark:bg-gray-300/10"
     >
 
     </Switch>

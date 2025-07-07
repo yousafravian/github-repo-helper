@@ -9,7 +9,7 @@ export default function RepoView({ repo }: { repo: Repo }) {
     return <>
         <Card className="flex-grow flex-shrink bg-white/5">
             <CardHeader>
-                <CardTitle><Checkbox id="terms1" /> {repo.full_name}</CardTitle>
+                <CardTitle><Checkbox id="terms1" /> <label className="cursor-pointer" htmlFor="terms1">{repo.full_name}</label></CardTitle>
                 <CardDescription>{ repo.description ?? '--' }</CardDescription>
             </CardHeader>
             <CardContent>
