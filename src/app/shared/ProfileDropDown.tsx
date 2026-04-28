@@ -13,7 +13,7 @@ import {GitHubHelper} from "../services/GitHubHelper";
 export default function ProfileDropDown({user}: { user: User }) {
   const logout = () => {
     console.log('logout');
-    GitHubHelper.logout(false);
+    GitHubHelper.logout(true);
   }
   return <DropdownMenu>
     <DropdownMenuTrigger className='outline-none'>
