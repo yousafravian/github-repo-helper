@@ -15,9 +15,9 @@ export function HeaderNavigationMenu() {
     <NavigationMenu>
       <NavigationMenuList className="gap-2">
         <NavigationMenuItem>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "glass hover:bg-white/10 transition-all duration-300")}>
+          <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "glass hover:bg-white/10 transition-all duration-300")}>
             <NavLink 
-              to={'/repos'}
+              to={'/'}
               className={({ isActive }) => cn(
                 'flex items-center gap-2 font-medium transition-colors',
                 isActive ? 'text-blue-400' : 'text-gray-300 hover:text-white'
@@ -29,7 +29,7 @@ export function HeaderNavigationMenu() {
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "glass hover:bg-white/10 transition-all duration-300")}>
+          <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "glass hover:bg-white/10 transition-all duration-300")}>
             <NavLink 
               to={'/about'}
               className={({ isActive }) => cn(
